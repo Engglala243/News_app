@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom';
-export class NavBar extends Component {
-  
-  render() {
-    return (
-      <div>
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+import { LANGUAGES } from './language';
+const NavBar = () => {
+    console.log(LANGUAGES)
+  return (
+    <div>
+        <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid">
                 <Link className="navbar-brand" to="/">News App</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,10 +40,17 @@ export class NavBar extends Component {
                     </ul>
                 </div>
             </div>
+            <select defaultValue={"es"}>
+                {LANGUAGES?.map(({ code, label }) => (
+
+                    <option key={code} value={code}>
+                        {label}
+                    </option>
+                ))}
+            </select>
         </nav>        
-      </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default NavBar;
